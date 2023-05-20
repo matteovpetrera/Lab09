@@ -11,7 +11,12 @@ public class TestDAO {
 
 		BordersDAO dao = new BordersDAO();
 
-		System.out.println("Lista di tutte le nazioni:");
-		List<Country> countries = dao.loadAllCountries();
+		//System.out.println("Lista di tutte le nazioni:");
+		//List<Country> countries = dao.loadAllCountries();
+		
+		List<Border> bordi = dao.isCollegate(2000);
+		for(Border b: bordi) {
+			System.out.println(b.toString());
+		}
 	}
 }

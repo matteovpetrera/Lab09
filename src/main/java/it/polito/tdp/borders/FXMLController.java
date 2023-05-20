@@ -4,6 +4,10 @@ package it.polito.tdp.borders;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.jgrapht.Graph;
+import org.jgrapht.graph.DefaultEdge;
+
+import it.polito.tdp.borders.model.Country;
 import it.polito.tdp.borders.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,6 +32,18 @@ public class FXMLController {
 
     @FXML
     void doCalcolaConfini(ActionEvent event) {
+    	
+    	txtResult.clear();
+    	
+    	int anno = Integer.valueOf(txtAnno.getText());
+    	
+    	Graph<Country, DefaultEdge> grafo = model.creaGrafo(anno);
+    	
+    	for(Country c: grafo.vertexSet()) {
+    		txtResult.appendText(c.toString()+" || grado del vertice: "+grafo.degreeOf(c)+"\n");
+    		
+    	}
+		txtResult.appendText("il grafo ha: "+ model.componenteConnessa()+" componenti connesse.");
 
     }
 
